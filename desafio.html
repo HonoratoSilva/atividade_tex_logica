@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>ola</p>
+   <!-- <script src="/estudos.js" ></script> -->
+</body>
+
+<script>
+
+    let numeros = [0, 0, 0];
+    let acumula = 0;
+    let contador = 0;
+    let guardarArray;
+
+    function sorteio() {
+        console.log("***Identifica se os números são iguais***");
+        
+        //Guarda o número de tentativas
+        guardarArray = [...numeros];
+
+        //For usado para criar números aleatórios
+        for (let i = 0; i < numeros.length; i++) {
+            numeros[i] = Math.floor(Math.random() * 3) + 1;
+        }
+        
+        console.log(`${numeros[0]} - ${numeros[1]} - ${numeros[2]}`);
+
+        // Lógica usada para comparação e contador de quantas vezes o número saiu igual
+        if (numeros[0] == 1 && numeros[1] == 1 && numeros[2] == 1) {
+            acumula++;
+        } else if (numeros[0] == 2 && numeros[1] == 2 && numeros[2] == 2){
+            acumula++;
+        } else if (numeros[0] == 3 && numeros[1] == 3 && numeros[2] == 3) {
+            acumula++;
+        }        
+        
+        console.log("***Identifica se os arrays são iguais***");
+        
+        //Console para mostrar os números de comparação de Array
+        console.log(`Array 1: ${guardarArray}`);
+        console.log(`Array 2: ${numeros}`);
+
+        //Lógica para comparação de arrays
+        if (numeros[0] == guardarArray[0] && numeros[1] == guardarArray[1] && numeros[2] == guardarArray[2]) {
+            acumula++;
+        }
+
+        console.log(`Porta ${acumula}: Aberta`);
+        
+    }
+    
+    //Enquanto o número de portas não for três ou o contador não passar do número de tentativas, o jogo continua rodando
+    do {
+        contador++;
+        sorteio();
+    } while (acumula < 3 && contador <= 30)
+
+    //Se as três portas forem abertas, jogo ganho! Caso contrário mensagem de derrota
+    if (acumula == 3) {
+        console.log(`Parabéns! você ganhou!!! - Tentativas: ${contador} de 30`)
+    } else {
+        console.log(`Sinto muito, não foi dessa vez :/ - Tentativas: ${contador} de 30`)
+    }
+        
+
+</script>
+</html>
